@@ -4,6 +4,8 @@ import Header from './components/Header.js';
 import GameOverModal from './components/GameOverModal.js';
 import Card from './components/Card.js';
 
+import './globalStyles.css';
+
 const Pokedex = require('pokeapi-js-wrapper');
 
 /* 
@@ -40,6 +42,8 @@ when level changes how do i activate the new level sequence?
 
 */
 
+const usedCards = [];
+
 const App = () => {
   const [level, setLevel] = useState(1);
   const [cardCount, setCardCount] = useState(4);
@@ -53,18 +57,17 @@ const App = () => {
 
   const [currentScore, setCurrentScore] = useState(0);
 
-  const [cardsClicked, setCardsClick] = useState([]);
+  const [cardsClicked, setCardsClicked] = useState([]);
 
   const [isGameOver, setIsGameOver] = useState(false);
 
   let listOfCards = [];
-  let usedCards = [];
 
   const maxCards = 12;
 
   useEffect(() => {
     if (isLoading)
-      initiateLevel(4)
+      initiateLevel(cardCount)
         .then((pokemons) => {
           pokemons.forEach((pokemon) => {
             listOfCards.push(
@@ -74,7 +77,7 @@ const App = () => {
         })
         .then(() => {
           setIsLoading(false);
-          setCards([...cards, ...listOfCards]);
+          setCards(listOfCards);
         });
 
     function initiateLevel(cardCount) {
@@ -88,8 +91,11 @@ const App = () => {
         let listOfPromises = [];
 
         for (let i = 0; i < cardCount; i++) {
-          const src = Pdex.getPokemonByName(getRandomID());
+          const id = getRandomID();
+          const src = Pdex.getPokemonByName(id);
           listOfPromises.push(src);
+          usedCards.push(id);
+          console.log(usedCards);
         }
 
         return Promise.all(listOfPromises);
@@ -110,17 +116,33 @@ const App = () => {
   });
 
   function handleCardClick(imgSrc) {
-    if (cardsClicked.find((src) => src === imgSrc)) return setIsGameOver(true);
+    if (cardsClicked.includes(imgSrc)) return setIsGameOver(true);
 
-    setCardsClick([...cardsClicked, imgSrc]);
+    setCardsClicked([...cardsClicked, imgSrc]);
     if (currentScore + 1 > highScore) setHighScore(currentScore + 1);
     setCurrentScore(currentScore + 1);
+    setCards(shuffle(cards));
 
-    if (cardsClicked.length === cardCount) {
+    if (cardsClicked.length + 1 === cardCount) {
       setLevel(level + 1);
-      const num = cardCount + 2 >= maxCards ? cardCount + 2 : maxCards;
+      setCardsClicked([]);
+      const num = cardCount + 2 <= maxCards ? cardCount + 2 : maxCards;
       setCardCount(num);
+      setIsLoading(true);
     }
+  }
+
+  function shuffle(arr) {
+    let shuffled = [];
+    for (let i = 0; i < arr.length; i++) {
+      let rdmIndex = Math.floor(Math.random() * arr.length);
+      while (shuffled.includes(arr[rdmIndex]))
+        rdmIndex = Math.floor(Math.random() * arr.length);
+
+      shuffled.push(arr[rdmIndex]);
+    }
+
+    return shuffled;
   }
 
   return (
@@ -132,9 +154,11 @@ const App = () => {
         {!isLoading && (
           <div>
             <div>Level {level}</div>
-            {cards.map((card) => (
-              <Card imgSrc={card} onClick={handleCardClick} />
-            ))}
+            <div className="card-ctn">
+              {cards.map((card) => (
+                <Card imgSrc={card} onClick={handleCardClick} />
+              ))}
+            </div>
           </div>
         )}
       </main>
