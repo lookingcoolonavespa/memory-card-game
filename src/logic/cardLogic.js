@@ -18,6 +18,7 @@ function grabRandomCards(cardCount) {
 
   return Promise.all(listOfPromises);
 
+  // helper functions
   function getRandomID() {
     const min = 1;
     const max = 898;
@@ -54,4 +55,8 @@ function loadImage(obj) {
   });
 }
 
-export { grabRandomCards, maxCards, shuffle, loadImage };
+function capitalizeFirstLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export { grabRandomCards, maxCards, shuffle, loadImage, capitalizeFirstLetter };

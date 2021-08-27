@@ -2,6 +2,8 @@ import React from 'react';
 
 import Scoreboard from './Scoreboard.js';
 
+import './styles/HeaderStyles.css';
+
 const Header = (props) => {
   return (
     <div className="header">

@@ -1,0 +1,29 @@
+.card {
+  background-color: #ffd7ba;
+  max-width: 150px;
+  min-width: 115px;
+  margin-right: 20px;
+  display: grid;
+  border: 10px solid #f8edeb;
+  border-radius: 10px;
+  font-family: 'Besley', serif;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: 0.2s all;
+}
+.card:hover {
+  transform: scale(1.1);
+}
+.card:first-child {
+  margin-left: 20px;
+}
+
+img {
+  padding-top: 10px;
+  margin: 0 auto;
+  width: 80%;
+}
+.card p {
+  text-align: center;
+}

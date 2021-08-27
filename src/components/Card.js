@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './styles/CardStyles.css';
+
 const Card = (props) => {
   const { imgSrc, altText, name } = props;
 

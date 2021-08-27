@@ -10,35 +10,34 @@ import {
   loadImage,
   maxCards,
   shuffle,
+  capitalizeFirstLetter,
 } from './logic/cardLogic.js';
 
 import './globalStyles.css';
 
 const App = () => {
   const [level, setLevel] = useState(1);
-  const [cardCount, setCardCount] = useState(4);
 
   const [isLoading, setIsLoading] = useState(true);
 
+  const [cardCount, setCardCount] = useState(4);
   const [cards, setCards] = useState([]);
+  const [cardsClicked, setCardsClicked] = useState([]);
 
   const [highScore, setHighScore] = useState(0);
-
   const [currentScore, setCurrentScore] = useState(0);
-
-  const [cardsClicked, setCardsClicked] = useState([]);
 
   const [isGameOver, setIsGameOver] = useState(false);
 
-  useEffect(() => {
+  useEffect(function initLevel() {
     if (isLoading)
       grabRandomCards(cardCount)
-        .then((pokemons) => {
+        .then(function grabInfo(pokemons) {
           let listOfCards = [];
 
           pokemons.forEach((pokemon) => {
             listOfCards.push({
-              name: pokemon.name,
+              name: capitalizeFirstLetter(pokemon.name),
               src: pokemon.sprites.other['official-artwork'].front_default,
             });
           });
@@ -77,9 +76,9 @@ const App = () => {
       <main>
         {isGameOver && <GameOverModal score={currentScore} />}
         {isLoading && <Loading />}
-        {!isLoading && (
-          <div>
-            <div>Level {level}</div>
+        {!isLoading && !isGameOver && (
+          <div className="game-ctn">
+            <div className="level-text">Level {level}</div>
             <div className="card-ctn">
               {cards.map((card) => (
                 <Card
