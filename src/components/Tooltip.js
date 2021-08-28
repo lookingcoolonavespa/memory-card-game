@@ -5,22 +5,17 @@ import './styles/TooltipStyles.css';
 const Tooltip = ({ close }) => {
   const tooltipRef = useRef(null);
 
-  const pxToShift = useRef(null);
-
-  const [loaded, setLoaded] = useState(false);
+  const [pxToShift, setPxToShift] = useState('-26.7px');
 
   useEffect(function positionTooltip() {
-    console.log('hi');
-    window.addEventListener('click', close);
     if (!tooltipRef.current) return;
+    window.addEventListener('click', close);
 
     const width = tooltipRef.current.offsetWidth;
     const trianglePos = 15; // in %, the value of 'left' styling of tooltip:before aka the little triangle thing
     const btnRadius = 15; // in px,
 
-    pxToShift.current = `-${(width * trianglePos) / 100 - btnRadius}px`;
-
-    setLoaded(true);
+    setPxToShift(`-${(width * trianglePos) / 100 - btnRadius}px`);
 
     return () => window.removeEventListener('click', close);
   }, []);
@@ -31,7 +26,7 @@ const Tooltip = ({ close }) => {
       ref={tooltipRef}
       style={{
         top: '43px',
-        left: pxToShift.current,
+        left: pxToShift,
       }}
       onClick={(e) => e.stopPropagation()}
     >

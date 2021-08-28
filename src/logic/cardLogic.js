@@ -6,13 +6,13 @@ const usedCards = [];
 
 const Pdex = new Pokedex.Pokedex();
 
-function grabRandomCards(cardCount) {
+function getRdmPokemon(cardCount) {
   let listOfPromises = [];
 
   for (let i = 0; i < cardCount; i++) {
     const id = getRandomID();
-    const src = Pdex.getPokemonByName(id);
-    listOfPromises.push(src);
+    const pokemon = Pdex.getPokemonByName(id);
+    listOfPromises.push(pokemon);
     usedCards.push(id);
   }
 
@@ -58,4 +58,4 @@ function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export { grabRandomCards, maxCards, shuffle, loadImage, capitalizeFirstLetter };
+export { getRdmPokemon, maxCards, shuffle, loadImage, capitalizeFirstLetter };

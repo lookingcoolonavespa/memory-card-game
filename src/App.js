@@ -6,7 +6,7 @@ import Card from './components/Card.js';
 import Loading from './components/Loading.js';
 
 import {
-  grabRandomCards,
+  getRdmPokemon,
   loadImage,
   maxCards,
   shuffle,
@@ -31,8 +31,8 @@ const App = () => {
 
   useEffect(function initLevel() {
     if (isLoading)
-      grabRandomCards(cardCount)
-        .then(function grabInfo(pokemons) {
+      getRdmPokemon(cardCount)
+        .then(function pullInfo(pokemons) {
           let listOfCards = [];
 
           pokemons.forEach((pokemon) => {
@@ -50,10 +50,10 @@ const App = () => {
         });
   });
 
-  function handleCardClick(imgSrc) {
-    if (cardsClicked.includes(imgSrc)) return setIsGameOver(true);
+  function handleCardClick(name) {
+    if (cardsClicked.includes(name)) return setIsGameOver(true);
 
-    setCardsClicked([...cardsClicked, imgSrc]);
+    setCardsClicked([...cardsClicked, name]);
     if (currentScore + 1 > highScore) setHighScore(currentScore + 1);
     setCurrentScore(currentScore + 1);
 

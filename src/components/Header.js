@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Scoreboard from './Scoreboard.js';
 import Tooltip from './Tooltip.js';
