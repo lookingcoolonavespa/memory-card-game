@@ -1,8 +1,9 @@
 const Pokedex = require('pokeapi-js-wrapper');
 
+const minCards = 4;
 const maxCards = 12;
 
-const usedCards = [];
+let usedCards = [];
 
 const Pdex = new Pokedex.Pokedex();
 
@@ -58,4 +59,18 @@ function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export { getRdmPokemon, maxCards, shuffle, loadImage, capitalizeFirstLetter };
+function emptyUsedCards() {
+  usedCards = [];
+
+  console.log(usedCards);
+}
+
+export {
+  getRdmPokemon,
+  maxCards,
+  minCards,
+  emptyUsedCards,
+  shuffle,
+  loadImage,
+  capitalizeFirstLetter,
+};

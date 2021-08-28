@@ -9,13 +9,16 @@ const Tooltip = ({ close }) => {
 
   useEffect(function positionTooltip() {
     if (!tooltipRef.current) return;
-    window.addEventListener('click', close);
 
     const width = tooltipRef.current.offsetWidth;
     const trianglePos = 15; // in %, the value of 'left' styling of tooltip:before aka the little triangle thing
     const btnRadius = 15; // in px,
 
     setPxToShift(`-${(width * trianglePos) / 100 - btnRadius}px`);
+  }, []);
+
+  useEffect(function closeTooltipEvent() {
+    window.addEventListener('click', close);
 
     return () => window.removeEventListener('click', close);
   }, []);
@@ -30,8 +33,6 @@ const Tooltip = ({ close }) => {
       }}
       onClick={(e) => e.stopPropagation()}
     >
-      How to play:
-      <br />
       Don't click on the same card twice!
     </div>
   );

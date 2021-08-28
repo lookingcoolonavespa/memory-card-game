@@ -5,9 +5,10 @@ import Tooltip from './Tooltip.js';
 
 import './styles/HeaderStyles.css';
 
-const Header = (props) => {
+const Header = ({ currentScore, highScore, isGameOver }) => {
   const [isHelp, setIsHelp] = useState(false);
 
+  if (isGameOver) return <div className="header"></div>;
   return (
     <div className="header">
       <div className="tooltip-ctn">
@@ -20,10 +21,7 @@ const Header = (props) => {
         </button>
         {isHelp && <Tooltip close={() => setIsHelp(false)} />}
       </div>
-      <Scoreboard
-        currentScore={props.currentScore}
-        highScore={props.highScore}
-      />
+      <Scoreboard currentScore={currentScore} highScore={highScore} />
     </div>
   );
 };

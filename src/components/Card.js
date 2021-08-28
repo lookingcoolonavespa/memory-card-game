@@ -1,22 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSpring, animated } from 'react-spring';
 
 import './styles/CardStyles.css';
 
-const Card = (props) => {
-  const { imgSrc, name } = props;
+const Card = ({ imgSrc, name, onClick }) => {
+  const [shuffle, shuffleAnimate] = useSpring(() => ({
+    transform: 'rotateY(0)',
+  }));
+
+  useEffect(() =>
+    shuffleAnimate.start({
+      to: { transform: 'rotateY(0)' },
+      from: { transform: 'rotateY(270deg)' },
+    })
+  );
 
   return (
-    <div
+    <animated.div
+      style={shuffle}
       className="card"
       onClick={(e) => {
         const card = e.target.closest('.card');
-        props.onClick(card.dataset.pokemon);
+        onClick(card.dataset.pokemon);
       }}
       data-pokemon={name}
     >
-      <img src={imgSrc} alt={name}></img>
-      <p>{name}</p>
-    </div>
+      <div className="card-front">
+        <img src={imgSrc} alt={name}></img>
+        <p>{name}</p>
+      </div>
+      <div className="card-back">
+        <img
+          src="https://logos-world.net/wp-content/uploads/2020/05/Pokemon-Logo.png"
+          alt="pokemon logo"
+        />
+      </div>
+    </animated.div>
   );
 };
 
