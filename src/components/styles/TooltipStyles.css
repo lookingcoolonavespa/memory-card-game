@@ -4,6 +4,9 @@
   height: 100%;
   width: 100%;
 }
+.tooltip-ctn {
+  position: relative;
+}
 
 .tooltip {
   background-color: #ffe5d9;
