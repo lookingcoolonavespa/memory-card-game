@@ -21,7 +21,7 @@ const Tooltip = ({ close }) => {
     window.addEventListener('click', close);
 
     return () => window.removeEventListener('click', close);
-  }, []);
+  });
 
   return (
     <div
