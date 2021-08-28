@@ -41,7 +41,6 @@ function shuffle(arr) {
 
     shuffled.push(arr[rdmIndex]);
   }
-
   return shuffled;
 }
 

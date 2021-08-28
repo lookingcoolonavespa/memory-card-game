@@ -4,8 +4,8 @@ import ScoreField from './ScoreField.js';
 
 const Scoreboard = (props) => (
   <div className="scoreboard">
-    <ScoreField label="Your Score" score={props.currentScore} />
-    <ScoreField label="High Score" score={props.highScore} />
+    <ScoreField label="Score" score={props.currentScore} />
+    <ScoreField label="Best" score={props.highScore} />
   </div>
 );
 

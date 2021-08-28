@@ -7,7 +7,17 @@
   justify-content: center;
   align-items: center;
 }
+.tooltip-btn {
+  height: 30px;
+  width: 30px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: #d8e2dc;
+  border: 5px solid #ffe5d9;
+}
+
 .scoreboard {
+  margin-left: 20px;
   display: flex;
   column-gap: 20px;
   width: max-content;
