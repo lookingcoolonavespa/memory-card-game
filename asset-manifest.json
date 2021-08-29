@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/memory-card-game/index.html/static/css/main.c77dcb86.chunk.css",
-    "main.js": "/memory-card-game/index.html/static/js/main.4aa5a8af.chunk.js",
-    "main.js.map": "/memory-card-game/index.html/static/js/main.4aa5a8af.chunk.js.map",
-    "runtime-main.js": "/memory-card-game/index.html/static/js/runtime-main.2c490ec9.js",
-    "runtime-main.js.map": "/memory-card-game/index.html/static/js/runtime-main.2c490ec9.js.map",
-    "static/js/2.6c71907f.chunk.js": "/memory-card-game/index.html/static/js/2.6c71907f.chunk.js",
-    "static/js/2.6c71907f.chunk.js.map": "/memory-card-game/index.html/static/js/2.6c71907f.chunk.js.map",
-    "index.html": "/memory-card-game/index.html/index.html",
-    "static/css/main.c77dcb86.chunk.css.map": "/memory-card-game/index.html/static/css/main.c77dcb86.chunk.css.map",
-    "static/js/2.6c71907f.chunk.js.LICENSE.txt": "/memory-card-game/index.html/static/js/2.6c71907f.chunk.js.LICENSE.txt"
+    "main.css": "/memory-card-game/static/css/main.c77dcb86.chunk.css",
+    "main.js": "/memory-card-game/static/js/main.4aa5a8af.chunk.js",
+    "main.js.map": "/memory-card-game/static/js/main.4aa5a8af.chunk.js.map",
+    "runtime-main.js": "/memory-card-game/static/js/runtime-main.daf81cc3.js",
+    "runtime-main.js.map": "/memory-card-game/static/js/runtime-main.daf81cc3.js.map",
+    "static/js/2.6c71907f.chunk.js": "/memory-card-game/static/js/2.6c71907f.chunk.js",
+    "static/js/2.6c71907f.chunk.js.map": "/memory-card-game/static/js/2.6c71907f.chunk.js.map",
+    "index.html": "/memory-card-game/index.html",
+    "static/css/main.c77dcb86.chunk.css.map": "/memory-card-game/static/css/main.c77dcb86.chunk.css.map",
+    "static/js/2.6c71907f.chunk.js.LICENSE.txt": "/memory-card-game/static/js/2.6c71907f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2c490ec9.js",
+    "static/js/runtime-main.daf81cc3.js",
     "static/js/2.6c71907f.chunk.js",
     "static/css/main.c77dcb86.chunk.css",
     "static/js/main.4aa5a8af.chunk.js"
